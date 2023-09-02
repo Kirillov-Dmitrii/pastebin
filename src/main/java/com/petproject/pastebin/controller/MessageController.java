@@ -2,10 +2,11 @@ package com.petproject.pastebin.controller;
 
 import com.petproject.pastebin.model.Message;
 
+import com.petproject.pastebin.model.User;
 import com.petproject.pastebin.service.MessageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-;
+;import java.io.FileNotFoundException;
 
 @RestController
 @RequestMapping("/message")
@@ -17,16 +18,12 @@ public class MessageController {
         this.messageService = messageServiceImpl;
     }
 
-    @GetMapping
-    public String home() {
-        return "home";
-    }
-
     @PostMapping
-    public ResponseEntity<Message> createMessage(@RequestBody Message message) {
+    public ResponseEntity<?> createMessage(@RequestBody Message message) throws FileNotFoundException {
         messageService.createMessage(message);
         return ResponseEntity.ok(message);
     }
+
 
 
 

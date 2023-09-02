@@ -22,11 +22,14 @@ public class UserServiceImpl implements UserService{
 
     public User createUser(User user) {
         User result = userRepository.findByNickname(user.getNickname().toLowerCase());
-
         if(result != null) {
             return  null;
         }
-
         return userRepository.save(user);
+    }
+
+    public List<Message> getAllMessages(User user) {
+        Optional<User> result = userRepository.findById(user.getId());
+        return result.get().getMessages();
     }
 }

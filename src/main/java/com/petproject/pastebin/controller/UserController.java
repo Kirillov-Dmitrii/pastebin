@@ -32,8 +32,8 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-//    @GetMapping("/messages")
-//    public ResponseEntity<List<Message>> getAllMessages(@RequestBody User user) {
-//        return ResponseEntity.ok()
-//    }
+    @GetMapping("/messages")
+    public ResponseEntity<List<Message>> getAllMessages(@RequestBody User user) {
+        return ResponseEntity.ok(userService.getAllMessages(user));
+    }
 }
